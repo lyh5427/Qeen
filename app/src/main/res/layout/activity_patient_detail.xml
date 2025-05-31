@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnAddImg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

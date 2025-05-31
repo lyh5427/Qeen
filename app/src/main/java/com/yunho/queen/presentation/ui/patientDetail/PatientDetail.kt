@@ -15,7 +15,12 @@ import com.yunho.queen.R
 import com.yunho.queen.Util
 import com.yunho.queen.databinding.ActivityMainBinding
 import com.yunho.queen.databinding.ActivityPatientDetailBinding
+import com.yunho.queen.domain.local.PatientChart
+import com.yunho.queen.presentation.const.Action
+import com.yunho.queen.presentation.const.Const
+import com.yunho.queen.singleClickListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -38,23 +43,89 @@ class PatientDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPatientDetailBinding.inflate(layoutInflater)
 
+        setObserver()
+        setListener()
+
         setContentView(binding.root)
     }
 
-    private fun setObserver() {
+    override fun onStart() {
+        super.onStart()
 
+        setView()
     }
 
-    private fun setListener() {
+    private fun setView() = with(binding) {
+        val chartNum = intent.getStringExtra(Const.CHART)?: ""
+
+        if (chartNum != "") {
+            model.getPatientInfo(chartNum)
+        }
+    }
+
+    private fun setObserver() = with(binding) {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                model.action.collectLatest {
+                    when (it.action) {
+                        Action.SHOW_TOAST -> {
+                            Util.showToast(this@PatientDetail, it.obj as String)
+                        }
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                model.patientChartNumState.collectLatest {
+                    when (it.action) {
+                        Action.SET_TEXT -> patientChartNum.text = it.obj as String
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                model.patientNameState.collectLatest {
+                    when (it.action) {
+                        Action.SET_TEXT -> patientName.text = it.obj as String
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                model.chartRecyclerViewState.collectLatest {
+                    when (it.action) {
+                        Action.SET_ADAPTER -> setAdapter(it.obj as List<PatientChart>)
+                    }
+                }
+            }
+        }
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
 
             }
         }
+
+    }
+
+    private fun setListener() = with(binding) {
+        btnAddImg.singleClickListener {
+            pickImageFromGallery()
+        }
     }
 
     // 갤러리에서 이미지 선택 요청
-    fun pickImageFromGallery() {
+    private fun pickImageFromGallery() {
         pickImageLauncher.launch("image/*")
+    }
+
+    private fun setAdapter(itemList: List<PatientChart>) {
+
     }
 }

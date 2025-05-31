@@ -69,5 +69,9 @@ class Util {
             val dateFormat = SimpleDateFormat("yyyy-MM-DDHHMMSS", Locale.getDefault())
             return dateFormat.format(Date())
         }
+
+        fun showToast(context: Context, text: String) {
+            Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+        }
     }
 }

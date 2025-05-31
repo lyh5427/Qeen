@@ -13,8 +13,10 @@ data class PatientInfo(
 )
 
 @Entity
-data class PatientChar(
+data class PatientChart(
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
+    var charNum: String,
+    var patientName: String,
     var text: String,
     var regDT: Long = System.currentTimeMillis(),
 )
