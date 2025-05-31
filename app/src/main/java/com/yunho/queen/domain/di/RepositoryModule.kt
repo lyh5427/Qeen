@@ -1,0 +1,17 @@
+package com.yunho.queen.domain.di
+
+import com.yunho.queen.data.DataRepository
+import com.yunho.queen.domain.DataRepositorySource
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+    @Singleton
+    @Binds
+    abstract fun bindsDataRepo(repo: DataRepository): DataRepositorySource
+}

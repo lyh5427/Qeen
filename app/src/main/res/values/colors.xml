@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="AC">#FDE7EB</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF5656</color>
+
+    <color name="main00">#4E55FF</color>
+
+    <color name="main10">#f6f6ff</color>
+    <color name="main20">#edeeff</color>
+    <color name="main30">#dcddff</color>
+    <color name="main40">#b8bbff</color>
+    <color name="main70">#373cb3</color>
+    <color name="main80">#272a80</color>
+
+    <color name="blakc100">#000000</color>
+    <color name="black90">#1a1a1a</color>
+    <color name="black80">#333333</color>
+    <color name="black70">#4d4d4d</color>
+    <color name="black60">#666666</color>
+    <color name="black50">#808080</color>
+    <color name="black40">#999999</color>
+    <color name="black30">#b3b3b3</color>
+    <color name="black20">#cccccc</color>
+    <color name="black10">#e6e6e6</color>
+    <color name="black8">#ebebeb</color>
+    <color name="black6">#f0f0f0</color>
+    <color name="black4">#f5f5f5</color>
+    <color name="black2">#fafafa</color>
+
+    <color name="bkt90">#e6000000</color>
+    <color name="bkt70">#b3000000</color>
+    <color name="bkt10">#1a000000</color>
+    <color name="bkt50">#0d000000</color>
+</resources>

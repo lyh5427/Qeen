@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Text.Heading40b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">48dp</item>
+    </style>
+
+    <style name="Text.Heading32b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">48dp</item>
+    </style>
+
+    <style name="Text.Heading28b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">48dp</item>
+    </style>
+    <style name="Text.SubTitle24b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+    <style name="Text.SubTitle24r" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+    <style name="Text.SubTitle20b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+    <style name="Text.SubTitle20r" parent="android:TextAppearance">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+    <style name="Text.Body18b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">28dp</item>
+    </style>
+    <style name="Text.Body18r" parent="android:TextAppearance">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+
+    <style name="Text.Body16b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+
+    <style name="Text.Body16m" parent="android:TextAppearance">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardmedium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+
+    <style name="Text.Body16r" parent="android:TextAppearance">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">24dp</item>
+    </style>
+
+    <style name="Text.Body14b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+
+    <style name="Text.Body14m" parent="android:TextAppearance">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardmedium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">24dp</item>
+    </style>
+
+    <style name="Text.Body14r" parent="android:TextAppearance">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">20dp</item>
+    </style>
+
+    <style name="Text.Body12b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">24dp</item>
+    </style>
+
+    <style name="Text.Body12m" parent="android:TextAppearance">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardmedium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">24dp</item>
+    </style>
+
+    <style name="Text.Body12r" parent="android:TextAppearance">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">20dp</item>
+    </style>
+
+    <style name="Text.Description10b" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+
+    <style name="Text.Description10r" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">64dp</item>
+    </style>
+
+
+    <style name="Text.Keypad" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/bkt90</item>
+        <item name="android:fontFamily">@font/elicedigitalbaeumregular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineHeight">20dp</item>
+    </style>
+
+</resources>

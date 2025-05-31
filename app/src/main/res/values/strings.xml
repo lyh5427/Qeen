@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">queen</string>
+
+    <string name="navi_title_patient">환자 차트</string>
+    <string name="navi_title_study">공부</string>
+
+    <string name="chart_num_title">차트 번호 : </string>
+    <string name="patient_name_title">환자 이름 : </string>
+    <string name="btn_add_text">추가하기</string>
+
+
+    <string name="patient_empty_text">환자 리스트가 존재하지 않습니다.\n차트를 추가해보세요 👀</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
