@@ -75,7 +75,6 @@ class PatientListFragment : Fragment() {
                         Action.GONE -> patientList.toGone()
 
                         Action.SET_ADAPTER -> {
-                            Log.d("yunho", "${it.obj as List<PatientInfo>}")
                             setAdapter(it.obj as List<PatientInfo>)
                         }
                     }

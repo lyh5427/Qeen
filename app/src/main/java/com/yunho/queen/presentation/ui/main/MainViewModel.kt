@@ -36,8 +36,6 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             val list = repo.getAllPatientList()
 
-            Log.d("yunho", "${list.isNotEmpty()}")
-
             if (list.isNotEmpty()) {
                 _patientListState.emit(SendObject(Action.SET_ADAPTER, list))
                 _patientListState.emit(SendObject(Action.VISIBLE))

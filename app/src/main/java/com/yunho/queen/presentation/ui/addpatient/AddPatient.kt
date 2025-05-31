@@ -67,7 +67,8 @@ class AddPatient : AppCompatActivity() {
                         }
 
                         Action.FINISH -> {
-
+                            finish()
+                            showToast(resources.getString(R.string.save_success))
                         }
                     }
                 }
