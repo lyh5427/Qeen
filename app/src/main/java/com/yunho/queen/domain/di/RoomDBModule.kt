@@ -33,7 +33,7 @@ class RoomDBModule {
 
     @Singleton
     @Provides
-    fun providesPatientChartDao(db: PatientDataBase): PatientChartDao = db.dao()
+    fun providesPatientChartDao(db: PatientChartDataBase): PatientChartDao = db.dao()
 
     @Singleton
     @Provides

@@ -11,15 +11,15 @@ import javax.inject.Singleton
 class DataRepository @Inject constructor(
     private val patientDb: PatientInfoDao
 ) : DataRepositorySource {
-    override fun insertPatient(info: PatientInfo) {
+    override suspend fun insertPatient(info: PatientInfo) {
         patientDb.insert(info)
     }
 
-    override fun deletePatient(info: PatientInfo) {
+    override suspend fun deletePatient(info: PatientInfo) {
         patientDb.delete(info)
     }
 
-    override fun getPatient(chart: String): PatientInfo? = patientDb.getPatient(chart)
+    override suspend fun getPatient(chart: String): PatientInfo? = patientDb.getPatient(chart)
 
-    override fun getAllPatientList(): List<PatientInfo> = patientDb.getAll()
+    override suspend fun getAllPatientList(): List<PatientInfo> = patientDb.getAll()
 }
