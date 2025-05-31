@@ -21,6 +21,9 @@
         android:theme="@style/Theme.Queen"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.patientDetail.PatientDetail"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.addpatient.AddPatient"
             android:exported="false" />
         <activity

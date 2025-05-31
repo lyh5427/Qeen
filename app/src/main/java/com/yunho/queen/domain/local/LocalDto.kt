@@ -14,16 +14,9 @@ data class PatientInfo(
 
 @Entity
 data class PatientChar(
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
     var text: String,
     var regDT: Long = System.currentTimeMillis(),
-)
-
-@Entity
-data class PatientImage(
-    @PrimaryKey(autoGenerate = true) var id: Int,
-    var imageName: String
-
 )
 
 // 앱내에서 쓰는 DTO

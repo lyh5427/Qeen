@@ -55,7 +55,6 @@ class AddPatient : AppCompatActivity() {
     }
 
     private fun setObserver() = with(binding) {
-
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 model.action.collectLatest {
