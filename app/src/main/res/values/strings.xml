@@ -2,6 +2,7 @@
     <string name="app_name">queen</string>
 
     <string name="modify">수정하기</string>
+    <string name="save">저장</string>
 
     <string name="navi_title_patient">환자 차트</string>
     <string name="navi_title_study">공부</string>
@@ -15,6 +16,9 @@
     <string name="btn_add_img_text">이미지 추가하기</string>
     <string name="btn_add_chart_text">차트 추가하기</string>
 
+    <!--AddPatientChart-->
+    <string name="add_patient_chart_hint">차트 번호를 입력하세요</string>
+    <string name="add_patient_chart_content">내용을 입력하세요.</string>
 
     <!--error-->
     <string name="not_found_patient_err">환자가 존재하지 않습니다.</string>

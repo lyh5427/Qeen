@@ -5,15 +5,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.google.android.material.animation.AnimatableView.Listener
 import com.yunho.queen.R
 import com.yunho.queen.databinding.ActivityAddPatientBinding
 import com.yunho.queen.domain.local.PatientInfo
@@ -47,7 +43,7 @@ class AddPatient : AppCompatActivity() {
     }
 
     private fun setView() = with(binding) {
-        val chart = intent.getStringExtra(Const.CHART) ?: ""
+        val chart = intent.getStringExtra(Const.CHART_NUM) ?: ""
 
         if (chart != "") {
             model.getPatientInfo(chart)

@@ -17,6 +17,7 @@ data class PatientChart(
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
     var charNum: String,
     var patientName: String,
+    var title: String,
     var text: String,
     var regDT: Long = System.currentTimeMillis(),
 )

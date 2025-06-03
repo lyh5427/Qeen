@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="19dp"
+    tools:context=".presentation.ui.addpatientchart.AddPatientChart">
+
+    <EditText
+        android:id="@+id/editChartTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="10dp"
+        style="@style/Text.Body16b"
+        android:hint="@string/patient_chart_title_hint"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/devider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/bkt10"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/editChartTitle"/>
+
+    <EditText
+        android:id="@+id/editChartContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        style="@style/Text.Body14r"
+        android:hint="@string/add_patient_chart_content"
+        android:background="@android:color/transparent"
+        android:scrollbars="vertical"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:overScrollMode="always"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/devider"
+        app:layout_constraintBottom_toTopOf="@id/btnSave"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_postive"
+        android:enabled="false"
+        style="@style/Text.Body16b"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

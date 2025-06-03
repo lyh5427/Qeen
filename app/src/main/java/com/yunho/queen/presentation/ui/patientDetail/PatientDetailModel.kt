@@ -51,7 +51,7 @@ class PatientDetailModel @Inject constructor(
             val patientChartList = repo.getAllPatientChart(chartNum)
 
             if (patientInfo != null) {
-                _patientChartNumState.emit(SendObject(Action.SET_TEXT, patientInfo.id))
+                _patientChartNumState.emit(SendObject(Action.SET_TEXT, patientInfo.charNum))
                 _patientNameState.emit(SendObject(Action.SET_TEXT, patientInfo.name))
             } else {
                 _action.emit(

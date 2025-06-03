@@ -1,25 +1,21 @@
 package com.yunho.queen.presentation.ui.patientDetail
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.yunho.queen.R
 import com.yunho.queen.Util
-import com.yunho.queen.databinding.ActivityMainBinding
 import com.yunho.queen.databinding.ActivityPatientDetailBinding
 import com.yunho.queen.domain.local.PatientChart
 import com.yunho.queen.presentation.const.Action
 import com.yunho.queen.presentation.const.Const
+import com.yunho.queen.presentation.ui.addpatientchart.AddPatientChart
 import com.yunho.queen.presentation.ui.patientDetail.adapter.PatientChartAdapter
 import com.yunho.queen.singleClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,7 +59,7 @@ class PatientDetail : AppCompatActivity() {
     }
 
     private fun setView() = with(binding) {
-        val chartNum = intent.getStringExtra(Const.CHART)?: ""
+        val chartNum = intent.getStringExtra(Const.CHART_NUM)?: ""
 
         if (chartNum != "") {
             model.getPatientInfo(chartNum)
@@ -124,6 +120,16 @@ class PatientDetail : AppCompatActivity() {
     private fun setListener() = with(binding) {
         btnAddImg.singleClickListener {
             pickImageFromGallery()
+        }
+
+        btnAddChart.singleClickListener {
+            startActivity(
+                Intent(this@PatientDetail, AddPatientChart::class.java)
+                    .apply {
+                        putExtra(Const.PATIENT_NAME, patientName.text)
+                        putExtra(Const.CHART_NUM, patientChartNum.text)
+                    }
+            )
         }
     }
 

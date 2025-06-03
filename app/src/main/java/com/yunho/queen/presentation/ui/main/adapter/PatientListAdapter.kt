@@ -9,6 +9,7 @@ import com.yunho.queen.databinding.ItemPatientBinding
 import com.yunho.queen.domain.local.PatientInfo
 import com.yunho.queen.presentation.const.Const
 import com.yunho.queen.presentation.ui.addpatient.AddPatient
+import com.yunho.queen.presentation.ui.patientDetail.PatientDetail
 import com.yunho.queen.singleClickListener
 
 class PatientListAdapter(
@@ -31,7 +32,7 @@ class PatientListAdapter(
         binding.patientName.text = itemList[position].name
 
         binding.layoutItem.singleClickListener {
-            startAddPatientActivity()
+            startPatientDetail(position)
         }
 
         binding.imgMenu.singleClickListener {
@@ -49,9 +50,18 @@ class PatientListAdapter(
         val intent = Intent(context, AddPatient::class.java)
 
         if (patientInfo != null) {
-            intent.putExtra(Const.CHART, patientInfo.charNum)
+            intent.putExtra(Const.CHART_NUM, patientInfo.charNum)
         }
 
         context.startActivity(intent)
+    }
+
+    private fun startPatientDetail(position: Int) {
+        context.startActivity(
+            Intent(context, PatientDetail::class.java)
+                .apply {
+                    putExtra(Const.CHART_NUM, itemList[position].charNum)
+                }
+        )
     }
 }
