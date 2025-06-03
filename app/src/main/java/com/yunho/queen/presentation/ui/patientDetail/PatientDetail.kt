@@ -11,6 +11,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.yunho.queen.R
 import com.yunho.queen.Util
 import com.yunho.queen.databinding.ActivityMainBinding
@@ -18,6 +20,7 @@ import com.yunho.queen.databinding.ActivityPatientDetailBinding
 import com.yunho.queen.domain.local.PatientChart
 import com.yunho.queen.presentation.const.Action
 import com.yunho.queen.presentation.const.Const
+import com.yunho.queen.presentation.ui.patientDetail.adapter.PatientChartAdapter
 import com.yunho.queen.singleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -25,6 +28,12 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PatientDetail : AppCompatActivity() {
+
+    lateinit var binding: ActivityPatientDetailBinding
+    private val model: PatientDetailModel by viewModels()
+
+    lateinit var chartAdapter: PatientChartAdapter
+
     // 이미지 선택 콜백
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
@@ -36,8 +45,6 @@ class PatientDetail : AppCompatActivity() {
         }
     }
 
-    lateinit var binding: ActivityPatientDetailBinding
-    private val model: PatientDetailModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -125,7 +132,9 @@ class PatientDetail : AppCompatActivity() {
         pickImageLauncher.launch("image/*")
     }
 
-    private fun setAdapter(itemList: List<PatientChart>) {
-
+    private fun setAdapter(itemList: List<PatientChart>) = with(binding) {
+        chartAdapter = PatientChartAdapter(this@PatientDetail, itemList)
+        chartRecyclerView.adapter = chartAdapter
+        chartRecyclerView.layoutManager = LinearLayoutManager(this@PatientDetail)
     }
 }

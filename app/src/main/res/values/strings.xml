@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">queen</string>
 
+    <string name="modify">수정하기</string>
+
     <string name="navi_title_patient">환자 차트</string>
     <string name="navi_title_study">공부</string>
 
@@ -11,6 +13,7 @@
 
     <!--PatientDetail-->
     <string name="btn_add_img_text">이미지 추가하기</string>
+    <string name="btn_add_chart_text">차트 추가하기</string>
 
 
     <!--error-->
@@ -19,4 +22,7 @@
     <string name="patient_empty_text">환자 리스트가 존재하지 않습니다.\n차트를 추가해보세요 👀</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--환자 차트 리스트-->
+    <string name="patient_chart_title_hint">차트 타이틀입니다.</string>
 </resources>

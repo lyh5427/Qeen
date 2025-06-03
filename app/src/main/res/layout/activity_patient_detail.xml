@@ -66,10 +66,22 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chartRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@id/btnAddChart"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            style="@style/Text.Body16b"
+            android:text="@string/btn_add_chart_text"
+            android:background="@drawable/selector_positive_small"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
