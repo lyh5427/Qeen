@@ -80,4 +80,7 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
+
+    //Image 확대 라이브러리
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
 }

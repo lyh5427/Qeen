@@ -3,11 +3,11 @@
     <item
         android:id="@+id/page_patient"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_arrow_down"
         android:title="@string/navi_title_patient"/>
     <item
         android:id="@+id/page_study"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_arrow_down"
         android:title="@string/navi_title_study"/>
 </menu>

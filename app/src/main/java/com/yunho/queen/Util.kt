@@ -2,6 +2,7 @@ package com.yunho.queen
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import java.io.File
 import java.io.FileOutputStream
@@ -26,8 +27,8 @@ class Util {
                 val targetDir = File(context.getExternalFilesDir(null), folderName)
                 if (!targetDir.exists()) targetDir.mkdirs()
 
-                val targetFile = File(targetDir, getCurrentDateTimeString())
-
+                val targetFile = File(targetDir, "${getCurrentDateTimeString()}.jpg")
+                Log.d("yunhoo", "이미지 저장 경로: ${targetFile.absolutePath}")
                 // 복사 진행
                 context.contentResolver.openInputStream(uri)?.use { inputStream ->
                     FileOutputStream(targetFile).use { outputStream ->
@@ -58,11 +59,14 @@ class Util {
          * */
         fun loadImagesFromAppStorage(context: Context, folderName: String): List<File> {
             val dir = File(context.getExternalFilesDir(null), folderName)
-            if (!dir.exists()) return emptyList()
+            Log.d("yunhoo", "이미지 저장 경로: ${dir.absolutePath}")
+            if (!dir.exists()) return listOf(File(""))
 
-            return dir.listFiles { file ->
+            val fileList = dir.listFiles { file ->
                 file.isFile && file.extension.lowercase() in listOf("jpg", "jpeg", "png", "webp")
-            }?.toList() ?: emptyList()
+            }?.toList()?.plus(File(""))
+
+            return fileList?: listOf(File(""))
         }
 
         fun getCurrentDateTimeString(): String {

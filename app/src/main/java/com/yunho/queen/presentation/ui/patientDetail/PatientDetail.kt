@@ -1,8 +1,11 @@
 package com.yunho.queen.presentation.ui.patientDetail
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +13,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yunho.queen.R
 import com.yunho.queen.Util
 import com.yunho.queen.databinding.ActivityPatientDetailBinding
 import com.yunho.queen.domain.local.PatientChart
@@ -17,10 +21,15 @@ import com.yunho.queen.presentation.const.Action
 import com.yunho.queen.presentation.const.Const
 import com.yunho.queen.presentation.ui.addpatientchart.AddPatientChart
 import com.yunho.queen.presentation.ui.patientDetail.adapter.PatientChartAdapter
+import com.yunho.queen.presentation.ui.patientDetail.adapter.PatientImageAdapter
+import com.yunho.queen.presentation.ui.patientDetail.adapter.PatientImageAdapterListener
 import com.yunho.queen.singleClickListener
+import com.yunho.queen.toGone
+import com.yunho.queen.toVisible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.io.File
 
 @AndroidEntryPoint
 class PatientDetail : AppCompatActivity() {
@@ -29,15 +38,12 @@ class PatientDetail : AppCompatActivity() {
     private val model: PatientDetailModel by viewModels()
 
     lateinit var chartAdapter: PatientChartAdapter
+    lateinit var imgAdapter: PatientImageAdapter
 
     // 이미지 선택 콜백
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
-            Util.saveImageCopyToAppStorage(
-                context = this,
-                uri = it,
-                folderName = "my_folder"
-            )
+            model.saveImageUri(it)
         }
     }
 
@@ -54,7 +60,6 @@ class PatientDetail : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
         setView()
     }
 
@@ -103,7 +108,21 @@ class PatientDetail : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 model.chartRecyclerViewState.collectLatest {
                     when (it.action) {
-                        Action.SET_ADAPTER -> setAdapter(it.obj as List<PatientChart>)
+                        Action.SET_ADAPTER -> setChartAdapter(it.obj as List<PatientChart>)
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                model.imgRecyclerViewState.collect{
+                    when (it.action) {
+                        Action.GONE -> imgRecyclerView.toGone()
+
+                        Action.VISIBLE -> imgRecyclerView.toVisible()
+
+                        Action.SET_ADAPTER -> setImageAdapter(it.obj as List<File>)
                     }
                 }
             }
@@ -118,10 +137,6 @@ class PatientDetail : AppCompatActivity() {
     }
 
     private fun setListener() = with(binding) {
-        btnAddImg.singleClickListener {
-            pickImageFromGallery()
-        }
-
         btnAddChart.singleClickListener {
             startActivity(
                 Intent(this@PatientDetail, AddPatientChart::class.java)
@@ -138,9 +153,40 @@ class PatientDetail : AppCompatActivity() {
         pickImageLauncher.launch("image/*")
     }
 
-    private fun setAdapter(itemList: List<PatientChart>) = with(binding) {
+    private fun setChartAdapter(itemList: List<PatientChart>) = with(binding) {
         chartAdapter = PatientChartAdapter(this@PatientDetail, itemList)
         chartRecyclerView.adapter = chartAdapter
         chartRecyclerView.layoutManager = LinearLayoutManager(this@PatientDetail)
+    }
+
+    private fun setImageAdapter(imgList: List<File>) = with(binding) {
+        imgAdapter = PatientImageAdapter(
+            this@PatientDetail,
+            imgList,
+            object: PatientImageAdapterListener {
+                override fun selectImage(file: File?) {
+                    if (file == null) {
+                        pickImageFromGallery()
+                    } else {
+                        val dialog = Dialog(this@PatientDetail)
+                        dialog.setContentView(R.layout.dialog_show_img)
+
+                        val imageView = dialog.findViewById<ImageView>(R.id.dialogImageView)
+                        val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+                        imageView.setImageBitmap(bitmap)
+
+                        dialog.show()
+                    }
+                }
+            }
+        )
+
+        imgRecyclerView.adapter = imgAdapter
+
+        imgRecyclerView.layoutManager = LinearLayoutManager(
+            this@PatientDetail,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
     }
 }

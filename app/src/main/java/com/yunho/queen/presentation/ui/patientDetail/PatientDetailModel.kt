@@ -1,10 +1,14 @@
 package com.yunho.queen.presentation.ui.patientDetail
 
 import android.content.Context
+import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yunho.queen.R
+import com.yunho.queen.Util
 import com.yunho.queen.data.DataRepository
+import com.yunho.queen.domain.local.PatientInfo
 import com.yunho.queen.domain.local.SendObject
 import com.yunho.queen.presentation.const.Action
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,6 +17,7 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,22 +42,22 @@ class PatientDetailModel @Inject constructor(
         MutableSharedFlow(0, 1, BufferOverflow.SUSPEND)
     val imgRecyclerViewState =_imgRecyclerViewState.asSharedFlow()
 
-    private var _btnAddImgState: MutableSharedFlow<SendObject> =
-        MutableSharedFlow(0, 1, BufferOverflow.SUSPEND)
-    val btnAddImgState = _btnAddImgState.asSharedFlow()
-
     private var _chartRecyclerViewState: MutableSharedFlow<SendObject> =
         MutableSharedFlow(0, 1, BufferOverflow.SUSPEND)
     val chartRecyclerViewState =_chartRecyclerViewState.asSharedFlow()
 
+    var patientInfo: PatientInfo? = null
+
     fun getPatientInfo(chartNum: String) {
         viewModelScope.launch {
-            val patientInfo = repo.getPatient(chartNum)
+            patientInfo = repo.getPatient(chartNum)
             val patientChartList = repo.getAllPatientChart(chartNum)
 
             if (patientInfo != null) {
-                _patientChartNumState.emit(SendObject(Action.SET_TEXT, patientInfo.charNum))
-                _patientNameState.emit(SendObject(Action.SET_TEXT, patientInfo.name))
+                _patientChartNumState.emit(SendObject(Action.SET_TEXT, patientInfo!!.charNum))
+                _patientNameState.emit(SendObject(Action.SET_TEXT, patientInfo!!.name))
+
+                setImageAdapter()
             } else {
                 _action.emit(
                     SendObject(
@@ -77,6 +82,28 @@ class PatientDetailModel @Inject constructor(
                     )
                 )
             }
+        }
+    }
+
+    fun saveImageUri(uri: Uri) {
+        Util.saveImageCopyToAppStorage(
+            context = context,
+            uri = uri,
+            folderName = patientInfo!!.name
+        )
+        setImageAdapter()
+    }
+
+    fun setImageAdapter() {
+        viewModelScope.launch {
+            var imgList: List<File> = listOf()
+
+            imgList = Util.loadImagesFromAppStorage(context, patientInfo!!.name)
+
+            Log.d("yunho", "${imgList}aaaa")
+
+            _imgRecyclerViewState.emit(SendObject(Action.VISIBLE))
+            _imgRecyclerViewState.emit(SendObject(Action.SET_ADAPTER, imgList))
         }
     }
 }
