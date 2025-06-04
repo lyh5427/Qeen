@@ -66,7 +66,7 @@ class PatientDetailModel @Inject constructor(
                 _action.emit(
                     SendObject(
                         Action.SHOW_TOAST,
-                        context.getString(R.string.not_found_patient_err)
+                        context.getString(R.string.not_found_patient_chart_err)
                     )
                 )
             } else {
