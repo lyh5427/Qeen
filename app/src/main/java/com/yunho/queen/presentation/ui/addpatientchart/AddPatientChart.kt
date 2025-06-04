@@ -36,6 +36,10 @@ class AddPatientChart : AppCompatActivity() {
 
         setObserver()
         setListener()
+    }
+
+    override fun onStart() {
+        super.onStart()
         model.setData(intent)
     }
 

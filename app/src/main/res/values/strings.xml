@@ -22,6 +22,7 @@
 
     <!--error-->
     <string name="not_found_patient_err">환자가 존재하지 않습니다.</string>
+    <string name="not_found_patient_chart_err">환자가 차트가 존재하지 않습니다.</string>
 
     <string name="patient_empty_text">환자 리스트가 존재하지 않습니다.\n차트를 추가해보세요 👀</string>
     <!-- TODO: Remove or change this placeholder text -->
